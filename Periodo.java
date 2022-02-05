@@ -7,7 +7,7 @@ public class Periodo extends Dato
 
     public double getValue()
     {
-        return value;
+        return 12/value;
     }
 
     public boolean isCorrect()

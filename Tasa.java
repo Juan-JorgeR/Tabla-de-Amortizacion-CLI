@@ -10,7 +10,7 @@ public class Tasa extends Dato
 
     public double getValue()
     {
-        return value;
+        return value/100;
     }
 
     public boolean isCorrect()

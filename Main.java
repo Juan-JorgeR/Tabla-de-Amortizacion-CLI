@@ -131,33 +131,75 @@ public class Main
     private static void amortizar()
     {
         Object[][] values=tabla.getValue();
+        const double capitalInicial=capital.getValue();
+        const double amortizacionCapital=apitalInicial/(tiempo.getValue()*periodo.getValue());
+
+        double interes,cuota,capitalPendiente];
 
         for(int fila=0;values[fila][0]!=null;fila++)
         {
-            for(int columna=0;columna<5;columna++)
+            if(fila==0)
             {
-                if(columna=0)
-                {
-                    values[fila][columna]=(Object)fila;
-                }
-                else if(columna=1)
-                {
-                    
-                }
-                else if(columna=2)
+                for(int columna=0;columna<5;columna++)
                 {
 
-                }
-                else if(columna=3)
-                {
+                    if(columna=0)
+                    {
+                        values[fila][columna]=(Object)fila;
+                    }
+                    else if(columna=1)
+                    {   
+                        values[fila][columna]=null;                    
+                    }
+                    else if(columna=2)
+                    {
+                        values[fila][columna]=null;
+                    }
+                    else if(columna=3)
+                    {
+                        values[fila][columna]=null;
+                    }
+                    else if(columna=4)
+                    {
+                        values[fila][columna]=capitalPendiente;
+                    }
 
                 }
-                else if(columna=4)
-                {
-
-                }
-
             }
+            else
+            {
+                interes=capital.getValue()*tasa.getValue();
+                cuota=interes+amortizacionCapital;
+                capitalPendiente=capital.getValue()-amortizacionCapital;
+                capital.setValue(capitalPendiente);
+
+                for(int columna=0;columna<5;columna++)
+                {
+
+                    if(columna=0)
+                    {
+                        values[fila][columna]=(Object)fila;
+                    }
+                    else if(columna=1)
+                    {
+                        values[fila][columna]=interes;                    
+                    }
+                    else if(columna=2)
+                    {
+                        values[fila][columna]=amortizacionCapital;
+                    }
+                    else if(columna=3)
+                    {
+                        values[fila][columna]=cuota;
+                    }
+                    else if(columna=4)
+                    {
+                        values[fila][columna]=capitalPendiente;
+                    }
+
+                }
+            }
+            
         }
     }
 
