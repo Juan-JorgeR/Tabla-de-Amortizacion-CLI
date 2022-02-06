@@ -31,6 +31,7 @@ public class Main
 
     private static void displayInterfaz()
     {
+        System.out.printf("\n\t\t--Tabla de amortizacion--\n\n");
         inputCapital();
         System.out.println();
         inputTasa();
@@ -64,7 +65,7 @@ public class Main
     {
         boolean isCorrecto=false;
         periodo=new Periodo();
-
+        System.out.printf(">> Entre periodo: \n\n");
         System.out.printf("\t1) semanal\n");
         System.out.printf("\t2) quincenal\n");
         System.out.printf("\t3) mensual\n");
@@ -74,6 +75,7 @@ public class Main
         System.out.printf("\t7) semestral\n");
         System.out.printf("\t8) anual\n");
         
+        System.out.printf("Opcion: ");
         while(!isCorrecto)
         {
             switch(scan.nextInt())
@@ -131,37 +133,37 @@ public class Main
     private static void amortizar()
     {
         Object[][] values=tabla.getValue();
-        const double capitalInicial=capital.getValue();
-        const double amortizacionCapital=apitalInicial/(tiempo.getValue()*periodo.getValue());
+        double capitalInicial=capital.getValue();
+        double amortizacionCapital=capitalInicial/(tiempo.getValue()*periodo.getValue());
+        int npagos=(int)(tiempo.getValue()*periodo.getValue());
+        double interes,cuota,capitalPendiente;
 
-        double interes,cuota,capitalPendiente];
-
-        for(int fila=0;values[fila][0]!=null;fila++)
+        for(int fila=0;fila<=npagos;fila++)
         {
             if(fila==0)
             {
                 for(int columna=0;columna<5;columna++)
                 {
 
-                    if(columna=0)
+                    if(columna==0)
                     {
-                        values[fila][columna]=(Object)fila;
+                        values[fila][columna]=fila;
                     }
-                    else if(columna=1)
+                    else if(columna==1)
                     {   
                         values[fila][columna]=null;                    
                     }
-                    else if(columna=2)
+                    else if(columna==2)
                     {
                         values[fila][columna]=null;
                     }
-                    else if(columna=3)
+                    else if(columna==3)
                     {
                         values[fila][columna]=null;
                     }
-                    else if(columna=4)
+                    else if(columna==4)
                     {
-                        values[fila][columna]=capitalPendiente;
+                        values[fila][columna]=capital.getValue();
                     }
 
                 }
@@ -176,23 +178,23 @@ public class Main
                 for(int columna=0;columna<5;columna++)
                 {
 
-                    if(columna=0)
+                    if(columna==0)
                     {
-                        values[fila][columna]=(Object)fila;
+                        values[fila][columna]=fila;
                     }
-                    else if(columna=1)
+                    else if(columna==1)
                     {
                         values[fila][columna]=interes;                    
                     }
-                    else if(columna=2)
+                    else if(columna==2)
                     {
                         values[fila][columna]=amortizacionCapital;
                     }
-                    else if(columna=3)
+                    else if(columna==3)
                     {
                         values[fila][columna]=cuota;
                     }
-                    else if(columna=4)
+                    else if(columna==4)
                     {
                         values[fila][columna]=capitalPendiente;
                     }
@@ -205,18 +207,28 @@ public class Main
 
     private static void displayTabla()
     {
-        //amortizar();
+        amortizar();
         ArrayList<String> columns=tabla.getColumns();
         Object[][] values=tabla.getValue();
 
-        System.out.printf("|%10s |%10s |%10s |%10s |%10s|\n\n",columns.get(0),columns.get(1),columns.get(2),columns.get(3),columns.get(4));
+        System.out.printf("\n|%10s|%10s|%25s|%10s|%20s|\n\n",columns.get(0),columns.get(1),columns.get(2),columns.get(3),columns.get(4));
 
         for(int fila=0;values[fila][0]!=null;fila++)
         {
             for(int columna=0;columna<5;columna++)
             {
-                System.out.printf("%10s %10s %10s %10s %10s\n\n",values[fila][columna]);
+                if(columna==0)
+                    System.out.printf("%11s",values[fila][columna]);
+                else if(columna==1)
+                    System.out.printf("%11s",values[fila][columna]);
+                else if(columna==2)
+                    System.out.printf("%26s",values[fila][columna]);
+                else if(columna==3)
+                    System.out.printf("%11s",values[fila][columna]);
+                else
+                    System.out.printf("%21s",values[fila][columna]);
             }
+            System.out.printf("\n\n");
         }
     }
 
