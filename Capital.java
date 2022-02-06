@@ -3,7 +3,11 @@ public class Capital extends Dato
     public void setValue(double value)
     {
         if(value>=0 && value<1.e+8)
+        {
             this.value=value;
+            correcto=true;
+        }
+
         else
             correcto=false;
     }

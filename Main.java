@@ -211,22 +211,22 @@ public class Main
         ArrayList<String> columns=tabla.getColumns();
         Object[][] values=tabla.getValue();
 
-        System.out.printf("\n|%10s|%10s|%25s|%10s|%20s|\n\n",columns.get(0),columns.get(1),columns.get(2),columns.get(3),columns.get(4));
+        System.out.printf("\n|%10s|%15s|%25s|%15s|%20s|\n\n",columns.get(0),columns.get(1),columns.get(2),columns.get(3),columns.get(4));
 
         for(int fila=0;values[fila][0]!=null;fila++)
         {
             for(int columna=0;columna<5;columna++)
             {
                 if(columna==0)
-                    System.out.printf("%11s",values[fila][columna]);
+                    System.out.printf("%11d",values[fila][columna]);
                 else if(columna==1)
-                    System.out.printf("%11s",values[fila][columna]);
+                    System.out.printf("%16.2f",values[fila][columna]);
                 else if(columna==2)
-                    System.out.printf("%26s",values[fila][columna]);
+                    System.out.printf("%26.2f",values[fila][columna]);
                 else if(columna==3)
-                    System.out.printf("%11s",values[fila][columna]);
+                    System.out.printf("%16.2f",values[fila][columna]);
                 else
-                    System.out.printf("%21s",values[fila][columna]);
+                    System.out.printf("%21.2f",values[fila][columna]);
             }
             System.out.printf("\n\n");
         }
