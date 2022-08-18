@@ -109,7 +109,7 @@ public class Main
                     isCorrecto=true;
                     break;
                 case ANUAL:
-                    periodo.setValue(1);
+                    periodo.setValue(12);
                     isCorrecto=true;
                     break;
                 default:
